@@ -14,9 +14,6 @@ const OPTIONS = {
   stroke: {
     curve: 'straight' as const
   },
-  xaxis: {
-    categories: ['a', 'b', 'c', 'd', 'e']
-  },
   yaxis: {
     opposite: true
   },
