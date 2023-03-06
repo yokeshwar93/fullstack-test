@@ -68,7 +68,7 @@ $ npm start
 $ npm run api
 
 # start storybook
-npm run storybook 
+$ npm run storybook 
 ```
 
 #### Base
