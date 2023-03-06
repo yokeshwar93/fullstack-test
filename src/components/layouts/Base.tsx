@@ -5,7 +5,7 @@ import { AppBar } from '../app-bar';
 export const BaseLayout = ({ children }: PropsWithChildren<{}>) => {
   return (
     <Box sx={{ display: 'flex' }}>
-      <AppBar />
+      <AppBar title='Traffic' />
       <Box
           component="main"
           sx={{
