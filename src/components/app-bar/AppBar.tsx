@@ -8,7 +8,11 @@ const StyledAppBar = styled(MuiAppBar)`
   flex-direction: row;
 `;
 
-export const AppBar = () => {
+export type AppBarProps = {
+  title: string;
+};
+
+export const AppBar = ({ title }: AppBarProps) => {
   return (
     <StyledAppBar>
       <Typography
@@ -18,7 +22,7 @@ export const AppBar = () => {
         noWrap
         sx={{ flexGrow: 1, alignSelf: 'center' }}
       >
-        Traffic
+        { title }
       </Typography>
     </StyledAppBar>
   );
