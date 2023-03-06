@@ -2,7 +2,6 @@ import React from 'react';
 import MuiAppBar from '@mui/material/AppBar';
 import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
-import { TimeSelector } from '../time-selector';
 
 const StyledAppBar = styled(MuiAppBar)`
   padding: 12px 30px;
@@ -21,7 +20,6 @@ export const AppBar = () => {
       >
         Traffic
       </Typography>
-      <TimeSelector />
     </StyledAppBar>
   );
 };

@@ -1,46 +1,101 @@
-# Getting Started with Create React App
+# Full-stack test
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The assessment consists in building a dashboard for analyzing publishers site traffic insights.
 
-## Available Scripts
+Dashboard views are
 
-In the project directory, you can run:
+#### Homepage
 
-### `npm start`
+![Homepage](./public/home.png)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+#### Article Detail
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+![Article Details](./public/detail.png)
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+All data for feeding the dashboards can be found in `server/dataset.json`. It has the following shape
 
-### `npm run build`
+```json
+{
+  "traffic_data": [{
+    "id": "c0281ed3-160d-4be0-acc7-1dd9a62a4f78",
+    "url": "https://www.example.com/article1",
+    "author": "Maximilian",
+    "image_url": "https://picsum.photos/600/400?buster=0.4005155557173643",
+    "geo": "IT",
+    "daily_traffic": [{
+      "day": 1,
+      "hourly_traffic": [{
+        "hour": 0,
+        "traffic": 743
+      }, {
+        "hour": 1,
+        "traffic": 149
+      }, {
+        "hour": 2,
+        "traffic": 546
+      }, {
+        "hour": 3,
+        "traffic": 812
+      }, ...
+      {
+        "hour": 23,
+        "traffic": 768
+      }]
+    }, ...
+    {
+      "day": 31,
+      "hourly_traffic": [{
+        "hour": 0,
+        "traffic": 143
+      }, ...
+      {
+        "hour": 23,
+        "traffic": 448
+      }]
+    }]
+  }]
+}
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+A basic scaffolding with some components is provided too.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+# start app
+$ npm start
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# start server
+$ npm run api
 
-### `npm run eject`
+# start storybook
+npm run storybook 
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+#### Base
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![Base](./public/base.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+#### Components collection
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+![Components collection](./public/storybook.png)
 
-## Learn More
+## Feature requirements
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Global view
+  - Traffic is aggregated from all articles
+  - Articles data is displayed ordered by traffic
+  - Data can be filtered using top bar selector
+  - Clicking on an article should navigate to article details view
+- Details view
+  - Traffic is aggregated from the article
+  - Data can be filtered using top bar selector
+- Api
+  - should use generated dataset as database
+- Time selector
+  - Should allow to select a value from:
+    - Today
+    - Yesterday
+    - Last seven days
+    - This month
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+![time selector](./public/time-selector.png)
