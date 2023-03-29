@@ -5,6 +5,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { styled } from '@mui/material';
+import {useNavigate} from "react-router-dom";
 
 const Value = styled(Typography)`
   align-self: center;
@@ -17,11 +18,16 @@ export type ArticleProps = {
   url: string;
   image: string;
   traffic: number;
+  id: string;
+  isClickDisabled?: boolean
 };
 
-export const Article = ({ author, url, image, traffic }: ArticleProps) => {
+export const Article = ({ author, url, image, traffic, id, isClickDisabled }: ArticleProps) => {
+  const navigate = useNavigate();
   return (
-    <Card sx={{ display: 'flex', mb: 1, paddingRight: '6px' }} variant='outlined'>
+    <Card sx={{ display: 'flex', mb: 1, paddingRight: '6px',
+      cursor: `${!isClickDisabled ? 'pointer' : ''}`, pointerEvents: `${isClickDisabled && 'none'}`}}
+          variant='outlined' onClick={() => navigate(`/article/${id}`)}>
       <CardMedia
         component="img"
         sx={{ width: 151 }}

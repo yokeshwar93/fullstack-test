@@ -29,6 +29,18 @@ export default {
         type: 'number'
       },
       defaultValue: 12345,
+    },
+    id: {
+      control: {
+        type: 'text'
+      },
+      defaultValue: 'articleId'
+    },
+    isClickDisabled: {
+      control: {
+        type: 'boolean'
+      },
+      defaultValue: false
     }
   },
 } as ComponentMeta<typeof ArticleComponent>;

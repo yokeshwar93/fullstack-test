@@ -41,6 +41,6 @@ export const Chart = ({ labels, data, title }: ChartProps) => {
   };
 
   return (
-    <ReactApexChart options={ options } series={[{ data, name: 'value' }]} type="area" height={350} />
+    <ReactApexChart options={ options } series={[{ data, name: 'traffic' }]} type="area" height={350} />
   );
 };

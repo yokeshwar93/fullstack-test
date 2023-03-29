@@ -1,11 +1,22 @@
-import React, { PropsWithChildren } from 'react';
+import React, {createContext, useState} from 'react';
 import Box from '@mui/material/Box';
 import { AppBar } from '../app-bar';
+import {SelectChangeEvent} from "@mui/material";
+import {Outlet} from "react-router-dom";
 
-export const BaseLayout = ({ children }: PropsWithChildren<{}>) => {
+
+export const FilterContext = createContext({
+  selectedFilter: ''
+});
+export const BaseLayout = () => {
+  const [selectedFilter, setSelectedFilter] = useState<string>('today');
+
+  const handleFilterChange = (event : SelectChangeEvent) => {
+    setSelectedFilter(event.target.value)
+  }
   return (
     <Box sx={{ display: 'flex' }}>
-      <AppBar title='Traffic' />
+      <AppBar title='Traffic' selectedFilter={selectedFilter} handleFilterChange={handleFilterChange}/>
       <Box
           component="main"
           sx={{
@@ -15,7 +26,10 @@ export const BaseLayout = ({ children }: PropsWithChildren<{}>) => {
             marginTop: '64px'
           }}
         >
-          { children }
+        <FilterContext.Provider value={{selectedFilter}}>
+          <Outlet />
+        </FilterContext.Provider>
+
       </Box>
     </Box>
   );
